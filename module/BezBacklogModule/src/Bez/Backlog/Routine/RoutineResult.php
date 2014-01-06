@@ -11,7 +11,7 @@ namespace Bez\Backlog\Routine;
 
 use Bez\Backlog\Entity\JobInterface;
 
-class Result
+class RoutineResult
 {
     const SUCCESS = 1;
 
@@ -24,6 +24,8 @@ class Result
     protected $job;
 
     protected $messages;
+
+    protected $params;
 
     public function __construct($status, JobInterface $job = null, $messages = null)
     {

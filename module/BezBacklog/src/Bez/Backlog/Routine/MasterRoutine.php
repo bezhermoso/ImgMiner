@@ -50,7 +50,7 @@ class MasterRoutine implements RoutineInterface, EventManagerAwareInterface
 
     /**
      * @param JobInterface $job
-     * @return Result
+     * @return RoutineResult
      * @throws \Exception
      */
     public function process(JobInterface $job = null)
