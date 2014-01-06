@@ -47,4 +47,4 @@ class Result
     {
         return $this->job;
     }
-}
+} 

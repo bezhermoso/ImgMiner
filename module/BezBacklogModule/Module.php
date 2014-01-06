@@ -6,10 +6,9 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace BezGallery;
+namespace BezBacklogModule;
 
 
-use Bez\Gallery\Entity\Image;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
@@ -31,7 +30,7 @@ class Module implements
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                    'Bez\Gallery' => __DIR__ . '/src/Bez/Gallery'
+                    'Bez\Backlog' => __DIR__ . '/src/Bez/Backlog'
                 )
             )
         );

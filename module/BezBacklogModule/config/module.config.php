@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'gallery' => array(
+    'backlog' => array(
 
     )
 );

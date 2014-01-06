@@ -19,4 +19,4 @@ interface RoutineInterface
      * @throws \Exception
      */
     public function process(JobInterface $job);
-}
+} 
