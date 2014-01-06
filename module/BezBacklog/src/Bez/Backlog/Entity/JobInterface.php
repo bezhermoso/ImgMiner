@@ -6,12 +6,18 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace BezTask\Entity;
+namespace Bez\Backlog\Entity;
 
 
 interface JobInterface
 {
+    /**
+     * @return id
+     */
     public function getId();
 
+    /**
+     * @return string
+     */
     public function getType();
 }

@@ -6,8 +6,10 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace BezTask\Entity;
+namespace Bez\Backlog\Entity;
 
+
+use Bez\Backlog\Entity\JobInterface;
 
 class Job implements JobInterface
 {

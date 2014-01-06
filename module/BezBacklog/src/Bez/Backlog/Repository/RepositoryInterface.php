@@ -6,27 +6,27 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace BezBacklog\Repository;
+namespace Bez\Backlog\Repository;
 
 
-use BezTask\Entity\JobInterface;
+use Bez\Backlog\Entity\JobInterface;
 
 interface RepositoryInterface
 {
     /**
-     * @return JobInterface[]|array
+     * @return array|JobInterface[]
      */
     public function findAll();
 
     /**
      * @param JobInterface $job
-     * @return mixed
+     * @return void
      */
     public function save(JobInterface $job);
 
     /**
      * @param JobInterface $job
-     * @return mixed
+     * @return void
      */
     public function remove(JobInterface $job);
 

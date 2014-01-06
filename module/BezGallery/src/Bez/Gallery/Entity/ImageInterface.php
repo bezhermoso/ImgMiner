@@ -6,14 +6,23 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace BezGallery\Entity;
+namespace Bez\Gallery\Entity;
 
 
 interface ImageInterface
 {
+    /**
+     * @return integer
+     */
     public function getId();
 
+    /**
+     * @return string
+     */
     public function getTitle();
 
+    /**
+     * @return string
+     */
     public function getPathname();
 }

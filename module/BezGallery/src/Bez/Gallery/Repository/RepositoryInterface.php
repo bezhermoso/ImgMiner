@@ -6,16 +6,27 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace BezGallery\Repository;
+namespace Bez\Gallery\Repository;
 
 
-use BezGallery\Entity\ImageInterface;
+use Bez\Gallery\Entity\ImageInterface;
 
 interface RepositoryInterface
 {
+    /**
+     * @return array|ImageInterface[]
+     */
     public function findAll();
 
+    /**
+     * @param ImageInterface $image
+     * @return void
+     */
     public function save(ImageInterface $image);
 
+    /**
+     * @param ImageInterface $image
+     * @return void
+     */
     public function remove(ImageInterface $image);
 }
