@@ -15,7 +15,7 @@ interface RoutineInterface
 {
     /**
      * @param JobInterface $job
-     * @return Result
+     * @return RoutineResult
      * @throws \Exception
      */
     public function process(JobInterface $job);
