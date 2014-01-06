@@ -35,6 +35,7 @@ class Simple implements ManagerInterface
 
     /**
      * @param $name
+     * @throws \Bez\Backlog\Routine\Exception\RoutineNotFoundException
      * @return RoutineInterface
      */
     public function getRoutine($name)
@@ -46,4 +47,3 @@ class Simple implements ManagerInterface
         return $this->routines[$name];
     }
 }
- 

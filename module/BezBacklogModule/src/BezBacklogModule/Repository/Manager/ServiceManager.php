@@ -24,7 +24,6 @@ class ServiceManager implements ManagerInterface
 
     public function __construct(ServiceLocatorInterface $locator, $map)
     {
-
         if (!is_array($map) && !$map instanceof \Traversable) {
             throw new \InvalidArgumentException(sprintf('Expected array or an instance of \ArrayAccess. "%s" given.', get_class($map)));
         }
@@ -69,4 +68,3 @@ class ServiceManager implements ManagerInterface
 
     }
 }
- 
