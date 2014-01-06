@@ -49,4 +49,4 @@ class RoutineResult
     {
         return $this->job;
     }
-} 
+}

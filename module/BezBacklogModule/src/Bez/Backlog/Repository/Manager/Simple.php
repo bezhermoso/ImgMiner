@@ -51,4 +51,3 @@ class Simple implements ManagerInterface
         $this->repositories[$name] = $repository;
     }
 }
- 

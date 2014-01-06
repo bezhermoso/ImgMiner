@@ -10,5 +10,6 @@ namespace Bez\Backlog\Repository\Exception;
 
 
 class RepositoryNotFoundException extends \InvalidArgumentException
-{}
- 
+{
+
+}

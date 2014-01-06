@@ -6,21 +6,21 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace BezBacklogModule\Repository\Manager;
+namespace BezBacklogModule\Routine\Manager;
 
 
-use Bez\Backlog\Repository\Exception\RepositoryNotFoundException;
-use Bez\Backlog\Repository\Manager\ManagerInterface;
-use Bez\Backlog\Repository\RepositoryInterface;
+use Bez\Backlog\Routine\Exception\RoutineNotFoundException;
+use Bez\Backlog\Routine\Manager\ManagerInterface;
+use Bez\Backlog\Routine\RoutineInterface;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 class ServiceManager implements ManagerInterface
 {
 
-    protected $serviceLocator;
-
     protected $map;
+
+    protected $serviceLocator;
 
     public function __construct(ServiceLocatorInterface $locator, $map)
     {
@@ -35,36 +35,35 @@ class ServiceManager implements ManagerInterface
     /**
      * @param $name
      * @throws \RuntimeException
-     * @throws \Bez\Backlog\Repository\Exception\RepositoryNotFoundException
-     * @return RepositoryInterface
+     * @throws \Bez\Backlog\Routine\Exception\RoutineNotFoundException
+     * @return RoutineInterface
      */
-    public function getRepository($name)
+    public function getRoutine($name)
     {
         if (!isset($this->map[$name])) {
-            throw new RepositoryNotFoundException(sprintf('"%s" is not mapped to any repository.', $name));
+            throw new RoutineNotFoundException(sprintf('"%s" is not mapped to any routine..', $name));
         }
 
         try {
 
             $repository = $this->serviceLocator->get($this->map[$name]);
 
-            if (!$repository instanceof RepositoryInterface) {
+            if (!$repository instanceof RoutineInterface) {
                 throw new \RuntimeException(
-                                sprintf(
-                                    'Object with service name "%s" must implement %s. Instance of "%s" received.',
-                                    'Bez\Backlog\Repository\RepositoryInterface',
-                                    get_class($repository)));
+                    sprintf(
+                        'Object with service name "%s" must implement %s. Instance of "%s" received.',
+                        'Bez\Backlog\Repository\RoutineInterface',
+                        get_class($repository)));
             }
 
             return $repository;
 
         } catch (ServiceNotFoundException $e) {
-            throw new RepositoryNotFoundException(
-                        sprintf(
-                            '"%s" [%s] cannot be found in service locator.',
-                            $this->map[$name],
-                            $name), null, $e);
+            throw new RoutineNotFoundException(
+                sprintf(
+                    '"%s" [%s] cannot be found in service locator.',
+                    $this->map[$name],
+                    $name), null, $e);
         }
-
     }
 }
