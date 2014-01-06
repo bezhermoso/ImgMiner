@@ -11,6 +11,7 @@ namespace BezBacklogModule\Routine;
 
 use Bez\Backlog\Entity\JobInterface;
 use Bez\Backlog\Repository\RepositoryInterface;
+use Bez\Backlog\Routine\MasterRoutineInterface;
 use Bez\Backlog\Routine\RoutineInterface;
 use Bez\Backlog\Routine\RoutineResult;
 use Zend\EventManager\EventManager;
@@ -18,7 +19,7 @@ use Zend\EventManager\EventManagerAwareInterface;
 use Zend\EventManager\EventManagerInterface;
 use Bez\Backlog\Routine\RoutineEventInterface;
 
-class MasterRoutine implements RoutineInterface, EventManagerAwareInterface
+class MasterRoutine implements MasterRoutineInterface, EventManagerAwareInterface
 {
 
     /**
@@ -60,6 +61,14 @@ class MasterRoutine implements RoutineInterface, EventManagerAwareInterface
     public function getJobRepository()
     {
         return $this->repository;
+    }
+
+    /**
+     * @return RoutineInterface
+     */
+    public function getSubRoutine()
+    {
+        return $this->subRoutine;
     }
 
     /**
@@ -132,7 +141,7 @@ class MasterRoutine implements RoutineInterface, EventManagerAwareInterface
     public function subRoutineProcess(RoutineEvent $event)
     {
         $job = $event->getJob();
-        return $this->subRoutine->process($job);
+        return $this->getSubRoutine()->process($job);
     }
 
     /**
