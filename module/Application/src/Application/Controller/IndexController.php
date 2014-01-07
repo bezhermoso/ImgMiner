@@ -16,6 +16,8 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        $masterRoutine = $this->getServiceLocator()->get('routines.foo');
+
         return new ViewModel();
     }
 }

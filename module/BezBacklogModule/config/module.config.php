@@ -2,14 +2,14 @@
 
 return array(
     'backlog' => array(
-        'repository_manager' => 'Bez\Backlog\RepositoryManager\ServiceLocator',
+        'repository_manager' => 'BezBacklogModule\Repository\Manager\ServiceManager',
         'repositories' => array(
-            'foo' => 'Backlog\FooRepository',
+            'foo' => 'BezBacklogModule\Repository\InMemory',
         ),
 
-        'routine_manager' => 'Bez\Backlog\RoutineManager\ServiceLocator',
+        'routine_manager' => 'BezBacklogModule\Routine\Manager\ServiceManager',
         'routines' => array(
-            'foo' => 'Backlog\FooRoutine',
+            'foo' => 'BezBacklogModule\Routine\InMemory',
         ),
     )
 );

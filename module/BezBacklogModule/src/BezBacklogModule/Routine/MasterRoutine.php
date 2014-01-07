@@ -42,8 +42,12 @@ class MasterRoutine implements MasterRoutineInterface, EventManagerAwareInterfac
      */
     protected $subRoutine;
 
-    public function __construct(RepositoryInterface $repository, RoutineInterface $routine)
+    protected $jobType;
+
+    public function __construct($jobType, RepositoryInterface $repository, RoutineInterface $routine)
     {
+        $this->jobType = $jobType;
+
         $this->repository = $repository;
 
         if ($routine === $this) {
@@ -156,7 +160,7 @@ class MasterRoutine implements MasterRoutineInterface, EventManagerAwareInterfac
             __CLASS__,
             get_called_class(),
             'routines.*',
-            'routines.' . $this->jobType,
+            'routines.' . $this->getJobType(),
         ));
 
         $eventManager->setEventClass('BezBacklogModule\Routine\RoutineEvent');
@@ -180,5 +184,10 @@ class MasterRoutine implements MasterRoutineInterface, EventManagerAwareInterfac
         }
 
         return $this->events;
+    }
+
+    public function getJobType()
+    {
+        return $this->jobType;
     }
 }

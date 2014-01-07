@@ -13,22 +13,22 @@ use Bez\Backlog\Repository\Exception\RepositoryNotFoundException;
 use Bez\Backlog\Repository\Manager\ManagerInterface;
 use Bez\Backlog\Repository\RepositoryInterface;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class ServiceManager implements ManagerInterface
+class ServiceManager implements ManagerInterface, ServiceLocatorAwareInterface
 {
 
     protected $serviceLocator;
 
     protected $map;
 
-    public function __construct(ServiceLocatorInterface $locator, $map)
+    public function __construct($map)
     {
         if (!is_array($map) && !$map instanceof \Traversable) {
             throw new \InvalidArgumentException(sprintf('Expected array or an instance of \ArrayAccess. "%s" given.', get_class($map)));
         }
 
-        $this->serviceLocator = $locator;
         $this->map = $map;
     }
 
@@ -66,5 +66,25 @@ class ServiceManager implements ManagerInterface
                             $name), null, $e);
         }
 
+    }
+
+    /**
+     * Set service locator
+     *
+     * @param ServiceLocatorInterface $serviceLocator
+     */
+    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
+    {
+        $this->serviceLocator = $serviceLocator;
+    }
+
+    /**
+     * Get service locator
+     *
+     * @return ServiceLocatorInterface
+     */
+    public function getServiceLocator()
+    {
+        return $this->serviceLocator;
     }
 }

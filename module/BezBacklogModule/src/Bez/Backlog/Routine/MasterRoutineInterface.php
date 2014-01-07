@@ -22,4 +22,6 @@ interface MasterRoutineInterface extends RoutineInterface
      * @return RoutineInterface
      */
     public function getSubRoutine();
+
+    public function getJobType();
 }

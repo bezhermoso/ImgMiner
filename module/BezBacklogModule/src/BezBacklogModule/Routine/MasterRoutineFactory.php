@@ -32,6 +32,6 @@ class MasterRoutineFactory implements MasterRoutineFactoryInterface
         $repository = $this->repositories->getRepository($type);
         $routine = $this->routines->getRoutine($type);
 
-        return new MasterRoutine($repository, $routine);
+        return new MasterRoutine($type, $repository, $routine);
     }
 }

@@ -27,4 +27,18 @@ class Job implements JobInterface
     {
         return $this->type;
     }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
 }
